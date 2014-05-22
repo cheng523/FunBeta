@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="@string/general_setting" >
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="if_show_image"
+            android:summary="@string/if_show_image"
+            android:title="Checkbox" />
+    </PreferenceCategory>
+</PreferenceScreen>
