@@ -1,4 +1,4 @@
-package com.aiwan.funbeta.po;
+package com.a1w0n.funbeta.po;
 
 public class Article {
 

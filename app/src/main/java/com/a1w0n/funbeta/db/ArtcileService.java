@@ -1,4 +1,4 @@
-package com.aiwan.funbeta.db;
+package com.a1w0n.funbeta.db;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
-import com.aiwan.funbeta.po.Article;
+import com.a1w0n.funbeta.po.Article;
 
 public class ArtcileService extends DBUtil {
 
@@ -37,7 +37,7 @@ public class ArtcileService extends DBUtil {
 
 	/**
 	 * ����һ�����
-	 * 
+	 *
 	 * @param article
 	 * @return
 	 */
@@ -59,7 +59,7 @@ public class ArtcileService extends DBUtil {
 
 	/**
 	 * ���URlɾ���¼
-	 * 
+	 *
 	 * @param url
 	 * @return
 	 */
@@ -74,7 +74,7 @@ public class ArtcileService extends DBUtil {
 
 	/**
 	 * ��id��ȡArticle
-	 * 
+	 *
 	 * @param id
 	 * @return
 	 */
@@ -103,7 +103,7 @@ public class ArtcileService extends DBUtil {
 
 	/**
 	 * ��url��ȡArticle
-	 * 
+	 *
 	 * @param url
 	 * @return
 	 */
@@ -131,7 +131,7 @@ public class ArtcileService extends DBUtil {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return ��ݿ��е����������б�
 	 */
 	public List<Map<String, String>> getLocalArtclesList() {

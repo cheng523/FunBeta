@@ -1,4 +1,4 @@
-package com.aiwan.funbeta.ui;
+package com.a1w0n.funbeta.ui;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,15 +8,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.aiwan.funbeta.tools.TxtReader;
-import com.android.ui.R;
+import com.a1w0n.funbeta.tools.TxtReader;
+import com.a1w0n.funbeta.R;
 
-/**
- * ������ʾ��Ϣ�����������Ϣ��������־��
- * 
- * @author Administrator
- * 
- */
 public class ShowInformationActivity extends Activity {
 	public static final int KEY_ABOUT = 67;
 	public static final int KEY_UPDATE_INF = 71;

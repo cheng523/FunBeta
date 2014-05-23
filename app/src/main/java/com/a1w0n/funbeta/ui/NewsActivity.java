@@ -1,4 +1,4 @@
-package com.aiwan.funbeta.ui;
+package com.a1w0n.funbeta.ui;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -18,10 +18,10 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aiwan.funbeta.db.ArtcileService;
-import com.aiwan.funbeta.po.Article;
-import com.aiwan.funbeta.tools.HtmlTool;
-import com.android.ui.R;
+import com.a1w0n.funbeta.db.ArtcileService;
+import com.a1w0n.funbeta.po.Article;
+import com.a1w0n.funbeta.tools.HtmlTool;
+import com.a1w0n.funbeta.R;
 
 public class NewsActivity extends Activity {
 
@@ -54,7 +54,7 @@ public class NewsActivity extends Activity {
 
 	/**
 	 * ����/ˢ�� ��ǰҳ��
-	 * 
+	 *
 	 * @return
 	 */
 	private void refreshData() {
@@ -97,7 +97,7 @@ public class NewsActivity extends Activity {
 
 	/**
 	 * ���Դ���ݿ��м�����������
-	 * 
+	 *
 	 * @return �Ƿ�ɹ�����
 	 */
 	private boolean tryToLoadFromDataBase() {

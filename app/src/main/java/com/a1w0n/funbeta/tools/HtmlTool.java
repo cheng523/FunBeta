@@ -1,4 +1,4 @@
-package com.aiwan.funbeta.tools;
+package com.a1w0n.funbeta.tools;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -13,7 +13,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import com.aiwan.funbeta.ui.CnReaderActivity;
+import com.a1w0n.funbeta.ui.*;
 
 public class HtmlTool {
 

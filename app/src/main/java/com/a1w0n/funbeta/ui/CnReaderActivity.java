@@ -1,4 +1,4 @@
-package com.aiwan.funbeta.ui;
+package com.a1w0n.funbeta.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +22,8 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.aiwan.funbeta.tools.HtmlTool;
-import com.android.ui.R;
+import com.a1w0n.funbeta.tools.HtmlTool;
+import com.a1w0n.funbeta.R;
 
 public class CnReaderActivity extends Activity implements OnItemClickListener {
 

@@ -13,17 +13,17 @@
         android:label="@string/app_name" >
         <activity
             android:label="@string/app_name"
-            android:name="com.aiwan.funbeta.ui.CnReaderActivity" >
+            android:name="com.a1w0n.funbeta.ui.CnReaderActivity" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.aiwan.funbeta.ui.NewsActivity" />
-        <activity android:name="com.aiwan.funbeta.ui.SettingActivity" />
-        <activity android:name="com.aiwan.funbeta.ui.ShowInformationActivity" />
-        <activity android:name="com.aiwan.funbeta.ui.LocalArticlesListActivity" />
+<!--        <activity android:name="com.a1w0n.funbeta.ui.NewsActivity" />
+        <activity android:name="com.a1w0n.funbeta.ui.SettingActivity" />
+        <activity android:name="com.a1w0n.funbeta.ui.ShowInformationActivity" />
+        <activity android:name="com.a1w0n.funbeta.ui.LocalArticlesListActivity" />-->
     </application>
 
 </manifest>

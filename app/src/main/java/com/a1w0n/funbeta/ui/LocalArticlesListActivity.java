@@ -1,4 +1,4 @@
-package com.aiwan.funbeta.ui;
+package com.a1w0n.funbeta.ui;
 
 import java.util.List;
 import java.util.Map;
@@ -18,8 +18,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import com.aiwan.funbeta.db.ArtcileService;
-import com.android.ui.R;
+import com.a1w0n.funbeta.db.ArtcileService;
+import com.a1w0n.funbeta.R;
 
 public class LocalArticlesListActivity extends Activity implements
 		OnItemClickListener, OnItemLongClickListener {
@@ -87,7 +87,7 @@ public class LocalArticlesListActivity extends Activity implements
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	private void tryToClear() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);

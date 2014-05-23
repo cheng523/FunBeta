@@ -1,4 +1,4 @@
-package com.aiwan.funbeta.db;
+package com.a1w0n.funbeta.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

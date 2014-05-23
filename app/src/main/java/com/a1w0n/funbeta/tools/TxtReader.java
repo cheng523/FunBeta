@@ -1,4 +1,4 @@
-package com.aiwan.funbeta.tools;
+package com.a1w0n.funbeta.tools;
 
 import java.io.BufferedReader;
 import java.io.File;
