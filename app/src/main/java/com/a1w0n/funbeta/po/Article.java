@@ -41,6 +41,8 @@ public class Article {
 		
 		
 		
+		
+		
 		this.title = title;
 		this.content = content;
 	}
