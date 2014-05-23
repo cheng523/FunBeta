@@ -155,6 +155,8 @@ public class ArtcileService extends DBUtil {
 	/**
 	 * ɾ�����е����
 	 */
+
+
 	public void deleteAll() {
 		this.getWritableDatabase().delete(TABLE_NAME, null, null);
 	}

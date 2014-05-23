@@ -12,7 +12,8 @@ import java.io.UnsupportedEncodingException;
 public class TxtReader {
 	/**
 	 * ͨ��һ��InputStream��ȡ����
-	 * 
+	 *
+     *
 	 * @param inputStream
 	 * @return
 	 */
@@ -30,6 +31,7 @@ public class TxtReader {
 			while ((line = reader.readLine()) != null) {
 				sb.append(line);
 				sb.append("\n");
+
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

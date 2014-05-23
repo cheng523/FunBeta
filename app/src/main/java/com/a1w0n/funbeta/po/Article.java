@@ -31,10 +31,16 @@ public class Article {
 	public Article() {
 	}
 
+	
+	
 	public Article(int type, String url, String title, String content) {
 		super();
 		this.type = type;
 		this.url = url;
+		
+		
+		
+		
 		this.title = title;
 		this.content = content;
 	}

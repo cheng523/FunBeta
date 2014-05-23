@@ -36,6 +36,7 @@ public class CnReaderActivity extends Activity implements OnItemClickListener {
 	public static final String URL_MAIN = "http://www.cnbeta.com";
 	public static final String URL_MOBILE = "http://m.cnbeta.com";
 
+
 	private int pageID;
 	private ProgressDialog mProgressDialog;
 	private ListView mNewsListView;
@@ -69,16 +70,18 @@ public class CnReaderActivity extends Activity implements OnItemClickListener {
 		return button;
 	}
 
-	/**
-	 * 
-	 */
+    /**
+     *
+     * 点击加载跟多按钮
+     * 累加pageID获取数据
+     */
 	private void loadMore() {
 		mProgressDialog = ProgressDialog.show(this, null, getResources()
 				.getString(R.string.loading_tip));
 		new Thread(new Runnable() {
 			@Override
 			public void run() {
-				newsList.addAll(HtmlTool.getNewsListFromMobilePage(URL_MOBILE,
+				newsList.addAll(HtmlTool.getNewsListFromMobilePage(URL_MAIN,
 						++pageID));
 				handler.sendEmptyMessage(0);
 			}
@@ -87,6 +90,8 @@ public class CnReaderActivity extends Activity implements OnItemClickListener {
 	}
 
 	/**
+     * ProgressDialog  进度对话框
+     *
 	 * Get news data when the activity is created.
 	 */
 	private void getInitialNewsData() {
@@ -102,6 +107,9 @@ public class CnReaderActivity extends Activity implements OnItemClickListener {
 		}).start();
 	}
 
+    /**
+     * 进行消息处理
+     */
 	private Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
@@ -148,6 +156,12 @@ public class CnReaderActivity extends Activity implements OnItemClickListener {
 
 	}
 
+    /**
+     *  制作菜单
+     * @param menu
+     * @return
+     */
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(Menu.NONE, MENU_SETTING, 1,
@@ -168,6 +182,12 @@ public class CnReaderActivity extends Activity implements OnItemClickListener {
 		return super.onCreateOptionsMenu(menu);
 	}
 
+
+    /**
+     * 对菜单事件进行响应，跳转到不同的activity
+     * @param item
+     * @return
+     */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent intent;
