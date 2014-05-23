@@ -1,10 +1,5 @@
 package com.a1w0n.funbeta.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,15 +12,19 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.a1w0n.funbeta.tools.HtmlTool;
 import com.a1w0n.funbeta.R;
+import com.a1w0n.funbeta.libs.pulltorefresh.PullToRefreshListView;
+import com.a1w0n.funbeta.tools.HtmlTool;
 
-public class CnReaderActivity extends Activity implements OnItemClickListener {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class ReaderMainActivity extends BaseActivity implements OnItemClickListener {
 
 	private static final int MENU_SETTING = Menu.FIRST + 1;
 	private static final int MENU_REFRESH = Menu.FIRST + 2;
@@ -38,10 +37,14 @@ public class CnReaderActivity extends Activity implements OnItemClickListener {
 
 	private int pageID;
 	private ProgressDialog mProgressDialog;
-	private ListView mNewsListView;
+	private PullToRefreshListView mNewsListView;
 	private Button loadMoreButton;
 	private List<Map<String, String>> newsList;
 
+    /**
+     * Activity生命回调
+     * 设置界面、初始化成员变量
+     */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,9 +52,9 @@ public class CnReaderActivity extends Activity implements OnItemClickListener {
 		pageID = 0;
 		loadMoreButton = getLoadMoreButton();
 		newsList = new ArrayList<Map<String, String>>();
-		mNewsListView = (ListView) findViewById(R.id.newsListView);
+		mNewsListView = (PullToRefreshListView) findViewById(R.id.newsListView);
 		getInitialNewsData();
-		mNewsListView.setOnItemClickListener(CnReaderActivity.this);
+		mNewsListView.setOnItemClickListener(ReaderMainActivity.this);
 	}
 
 	/**
@@ -83,7 +86,7 @@ public class CnReaderActivity extends Activity implements OnItemClickListener {
 				handler.sendEmptyMessage(0);
 			}
 		}).start();
-		mNewsListView.removeFooterView(loadMoreButton);
+		//mNewsListView.removeFooterView(loadMoreButton);
 	}
 
 	/**
@@ -107,11 +110,11 @@ public class CnReaderActivity extends Activity implements OnItemClickListener {
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			if (newsList == null) {
-				Toast.makeText(CnReaderActivity.this,
+				Toast.makeText(ReaderMainActivity.this,
 						R.string.no_intenert_connection_tip, Toast.LENGTH_LONG)
 						.show();
 			} else {
-				mNewsListView.addFooterView(loadMoreButton);
+				//mNewsListView.addFooterView(loadMoreButton);
 				showNewsList();
 				//mNewsListView.setSelection((pageID - 1) * 30 - 1);
 			}
