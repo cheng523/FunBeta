@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#F5F4F2"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/FRM_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ProgressBar
+            android:id="@+id/FRM_readlProgressBar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/FRM_readlProgressBar"
+            android:text="@string/FRM_loadingHint"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/FRM_noDataText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/FRM_noDataHint"
+        android:textSize="22sp"
+        android:visibility="gone" />
+
+    <com.a1w0n.funbeta.libs.pulltorefresh.PullToRefreshListView
+        android:id="@+id/FRM_newsList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+
+</RelativeLayout>

@@ -8,22 +8,23 @@ import android.os.Message;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.a1w0n.funbeta.R;
 import com.a1w0n.funbeta.libs.pulltorefresh.PullToRefreshListView;
-import com.a1w0n.funbeta.tools.HtmlTool;
+import com.a1w0n.funbeta.ui.Fragment.ReaderMainFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 主Activity，就是个空壳而已。
+ * 真正的内容和逻辑都在ReaderMainFragment
+ */
 public class ReaderMainActivity extends BaseActivity implements OnItemClickListener {
 
 	private static final int MENU_SETTING = Menu.FIRST + 1;
@@ -32,13 +33,9 @@ public class ReaderMainActivity extends BaseActivity implements OnItemClickListe
 	private static final int MENU_UPDATE_LOG = Menu.FIRST + 4;
 	private static final int MENU_LOCAL_DATA = Menu.FIRST + 5;
 
-	public static final String URL_MAIN = "http://www.cnbeta.com";
-	public static final String URL_MOBILE = "http://m.cnbeta.com";
-
 	private int pageID;
 	private ProgressDialog mProgressDialog;
 	private PullToRefreshListView mNewsListView;
-	private Button loadMoreButton;
 	private List<Map<String, String>> newsList;
 
     /**
@@ -48,61 +45,68 @@ public class ReaderMainActivity extends BaseActivity implements OnItemClickListe
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
-		pageID = 0;
-		loadMoreButton = getLoadMoreButton();
-		newsList = new ArrayList<Map<String, String>>();
-		mNewsListView = (PullToRefreshListView) findViewById(R.id.newsListView);
-		getInitialNewsData();
-		mNewsListView.setOnItemClickListener(ReaderMainActivity.this);
+		setContentView(R.layout.activity_readermain);
+
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().add(R.id.ARM_mainContainer, new ReaderMainFragment()).commit();
+        }
+
+//		pageID = 0;
+//		newsList = new ArrayList<Map<String, String>>();
+//        initUIComponents();
+//		getInitialNewsData();
+
 	}
 
-	/**
-	 * Return the get more button, it's meant to be add to listview as footer.
-	 */
-	private Button getLoadMoreButton() {
-		Button button = new Button(this);
-		button.setText(getResources().getString(R.string.load_more));
-		button.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				loadMore();
-			}
-		});
-		return button;
-	}
+    /**
+     * 初始化和配置UI控件，防止onCreate过于臃肿
+     */
+    private void initUIComponents() {
+//        mNewsListView = (PullToRefreshListView) findViewById(R.id.newsListView);
+//        mNewsListView.setOnItemClickListener(ReaderMainActivity.this);
+//        mNewsListView.setMode(PullToRefreshBase.Mode.BOTH);
+//
+//        mNewsListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+//            @Override
+//            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+//
+//            }
+//        });
+
+
+    }
 
 	/**
 	 * 
 	 */
 	private void loadMore() {
-		mProgressDialog = ProgressDialog.show(this, null, getResources()
-				.getString(R.string.loading_tip));
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				newsList.addAll(HtmlTool.getNewsListFromMobilePage(URL_MOBILE,
-						++pageID));
-				handler.sendEmptyMessage(0);
-			}
-		}).start();
-		//mNewsListView.removeFooterView(loadMoreButton);
+//		mProgressDialog = ProgressDialog.show(this, null, getResources()
+//				.getString(R.string.loading_tip));
+//		new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				newsList.addAll(HtmlTool.getNewsListFromMobilePage(URL_MOBILE,
+//						++pageID));
+//				handler.sendEmptyMessage(0);
+//			}
+//		}).start();
+//		//mNewsListView.removeFooterView(loadMoreButton);
 	}
 
 	/**
-	 * Get news data when the activity is created.
+	 * 从网站上获取网页的源码，从而解析出新闻标题和内容
 	 */
 	private void getInitialNewsData() {
-		mProgressDialog = ProgressDialog.show(this, null, getResources()
-				.getString(R.string.loading_tip));
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				newsList = (HtmlTool.getNewsListFromMobilePage(URL_MOBILE,
-						pageID));
-				handler.sendEmptyMessage(0);
-			}
-		}).start();
+//		mProgressDialog = ProgressDialog.show(this, null, getResources()
+//				.getString(R.string.loading_tip));
+//		new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				newsList = (HtmlTool.getNewsListFromMobilePage(URL_MOBILE,
+//						pageID));
+//				handler.sendEmptyMessage(0);
+//			}
+//		}).start();
 	}
 
 	private Handler handler = new Handler() {

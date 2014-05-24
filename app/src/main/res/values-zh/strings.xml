@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">FunBeta</string>
+    
+    <!-- Tips -->
+    <string name="loading_tip">加载中，稍安勿躁……</string>
+    <string name="delete_tip">确定删除吗？</string>
+    <string name="claer_data_tip">确定要清空本地数据吗？</string>
+    <string name="no_intenert_connection_tip">无法连接到网络，请检查你的网络连接是否正常</string>
+    <!-- normal -->
+    <string name="load_more">加载更多</string>
+    <string name="back">返回</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+
+    <!-- settings -->
+    <string name="general_setting">常规设置</string>
+    <string name="if_show_image">是否显示图片</string>
+
+    <!-- Menu options -->
+    <string name="setting">设置</string>
+    <string name="refresh">刷新</string>
+    <string name="exit">退出</string>
+    <string name="about">关于</string>
+    <string name="update_log">更新日志</string>
+    <string name="open_local_data">查看本地数据</string>
+    <string name="clear_local_data">清空本地数据</string>
+    <string name="hot_recommended">人气推荐</string>
+
+    <string name="FRM_noDataHint">没有数据</string>
+    <string name="FRM_loadingHint">正在加载数据...</string>
+
+</resources>
