@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.a1w0n.funbeta.AsyncTask.GetCBBeanAsyncTask;
+import com.a1w0n.funbeta.Bean.CBBean;
 import com.a1w0n.funbeta.R;
 import com.a1w0n.funbeta.libs.pulltorefresh.PullToRefreshListView;
 
@@ -40,7 +41,7 @@ public class ReaderMainFragment extends BaseFragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         GetCBBeanAsyncTask task = new GetCBBeanAsyncTask(){
             @Override
-            protected void PostExecute(List<Map<String, String>> paramResult) {
+            protected void PostExecute(CBBean paramResult) {
                 super.PostExecute(paramResult);
                 onNewsDataReceived(paramResult);
             }
@@ -66,7 +67,7 @@ public class ReaderMainFragment extends BaseFragment{
     /**
      * AsyncTask获取到新闻数据了，用这个方法来显示出来
      */
-    private void onNewsDataReceived(List<Map<String, String>> paramResult) {
+    private void onNewsDataReceived(CBBean paramResult) {
 
     }
 }

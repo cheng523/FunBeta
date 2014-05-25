@@ -104,6 +104,7 @@ public class HtmlTool {
                 string = urlString + "/list_latest_" + pageID;
             }
             doc = Jsoup.parse(new URL(string), 5000);
+            String a = "asdf";
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
