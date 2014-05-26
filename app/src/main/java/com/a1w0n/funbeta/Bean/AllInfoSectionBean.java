@@ -8,6 +8,6 @@ import java.util.ArrayList;
  * Html中allinfo section（全部新闻）section的数据封装
  */
 public class AllInfoSectionBean {
-
-    public ArrayList<ArticleTitleBean> articles;
+    // 所有的 "所有新闻"
+    public ArrayList<AllInfoArticleBean> articles;
 }

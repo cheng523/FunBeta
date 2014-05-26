@@ -9,6 +9,6 @@ import java.util.ArrayList;
  */
 public class RealtimeSectionBean {
 
-    public ArrayList<ArticleTitleBean> articles;
+    public ArrayList<RealTimeArticleBean> articles;
 
 }
