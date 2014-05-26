@@ -1,10 +1,5 @@
 package com.a1w0n.funbeta.ui;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,19 +8,24 @@ import android.os.Message;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.a1w0n.funbeta.tools.HtmlTool;
 import com.a1w0n.funbeta.R;
+import com.a1w0n.funbeta.libs.pulltorefresh.PullToRefreshListView;
+import com.a1w0n.funbeta.ui.Fragment.ReaderMainFragment;
 
-public class CnReaderActivity extends Activity implements OnItemClickListener {
+import java.util.List;
+import java.util.Map;
+
+/**
+ * ä¸»Activityï¼Œå°±æ˜¯ä¸ªç©ºå£³è€Œå·²ã€‚
+ * çœŸæ­£çš„å†…å®¹å’Œé€»è¾‘éƒ½åœ¨ReaderMainFragment
+ */
+public class ReaderMainActivity extends BaseActivity implements OnItemClickListener {
 
 	private static final int MENU_SETTING = Menu.FIRST + 1;
 	private static final int MENU_REFRESH = Menu.FIRST + 2;
@@ -33,93 +33,92 @@ public class CnReaderActivity extends Activity implements OnItemClickListener {
 	private static final int MENU_UPDATE_LOG = Menu.FIRST + 4;
 	private static final int MENU_LOCAL_DATA = Menu.FIRST + 5;
 
-	public static final String URL_MAIN = "http://www.cnbeta.com";
-	public static final String URL_MOBILE = "http://m.cnbeta.com";
-
-
 	private int pageID;
 	private ProgressDialog mProgressDialog;
-	private ListView mNewsListView;
-	private Button loadMoreButton;
+	private PullToRefreshListView mNewsListView;
 	private List<Map<String, String>> newsList;
 
+    /**
+     * Activityç”Ÿå‘½å›è°ƒ
+     * è®¾ç½®ç•Œé¢ã€åˆå§‹åŒ–æˆå‘˜å˜é‡
+     */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main);
-		pageID = 0;
-		loadMoreButton = getLoadMoreButton();
-		newsList = new ArrayList<Map<String, String>>();
-		mNewsListView = (ListView) findViewById(R.id.newsListView);
-		getInitialNewsData();
-		mNewsListView.setOnItemClickListener(CnReaderActivity.this);
-	}
+		setContentView(R.layout.activity_readermain);
 
-	/**
-	 * Return the get more button, it's meant to be add to listview as footer.
-	 */
-	private Button getLoadMoreButton() {
-		Button button = new Button(this);
-		button.setText(getResources().getString(R.string.load_more));
-		button.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				loadMore();
-			}
-		});
-		return button;
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().add(R.id.ARM_mainContainer, new ReaderMainFragment()).commit();
+        }
+
+//		pageID = 0;
+//		newsList = new ArrayList<Map<String, String>>();
+//        initUIComponents();
+//		getInitialNewsData();
+
 	}
 
     /**
-     *
-     * µã»÷¼ÓÔØ¸ú¶à°´Å¥
-     * ÀÛ¼ÓpageID»ñÈ¡Êı¾İ
+     * åˆå§‹åŒ–å’Œé…ç½®UIæ§ä»¶ï¼Œé˜²æ­¢onCreateè¿‡äºè‡ƒè‚¿
      */
+    private void initUIComponents() {
+//        mNewsListView = (PullToRefreshListView) findViewById(R.id.newsListView);
+//        mNewsListView.setOnItemClickListener(ReaderMainActivity.this);
+//        mNewsListView.setMode(PullToRefreshBase.Mode.BOTH);
+//
+//        mNewsListView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
+//            @Override
+//            public void onRefresh(PullToRefreshBase<ListView> refreshView) {
+//
+//            }
+//        });
+
+
+    }
+
+	/**
+	 * 
+	 */
 	private void loadMore() {
-		mProgressDialog = ProgressDialog.show(this, null, getResources()
-				.getString(R.string.loading_tip));
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				newsList.addAll(HtmlTool.getNewsListFromMobilePage(URL_MAIN,
-						++pageID));
-				handler.sendEmptyMessage(0);
-			}
-		}).start();
-		mNewsListView.removeFooterView(loadMoreButton);
+//		mProgressDialog = ProgressDialog.show(this, null, getResources()
+//				.getString(R.string.loading_tip));
+//		new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				newsList.addAll(HtmlTool.getNewsListFromMobilePage(URL_MOBILE,
+//						++pageID));
+//				handler.sendEmptyMessage(0);
+//			}
+//		}).start();
+//		//mNewsListView.removeFooterView(loadMoreButton);
 	}
 
 	/**
-     * ProgressDialog  ½ø¶È¶Ô»°¿ò
-     *
-	 * Get news data when the activity is created.
+	 * ä»ç½‘ç«™ä¸Šè·å–ç½‘é¡µçš„æºç ï¼Œä»è€Œè§£æå‡ºæ–°é—»æ ‡é¢˜å’Œå†…å®¹
 	 */
 	private void getInitialNewsData() {
-		mProgressDialog = ProgressDialog.show(this, null, getResources()
-				.getString(R.string.loading_tip));
-		new Thread(new Runnable() {
-			@Override
-			public void run() {
-				newsList = (HtmlTool.getNewsListFromMobilePage(URL_MOBILE,
-						pageID));
-				handler.sendEmptyMessage(0);
-			}
-		}).start();
+//		mProgressDialog = ProgressDialog.show(this, null, getResources()
+//				.getString(R.string.loading_tip));
+//		new Thread(new Runnable() {
+//			@Override
+//			public void run() {
+//				newsList = (HtmlTool.getNewsListFromMobilePage(URL_MOBILE,
+//						pageID));
+//				handler.sendEmptyMessage(0);
+//			}
+//		}).start();
 	}
 
-    /**
-     * ½øĞĞÏûÏ¢´¦Àí
-     */
 	private Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
 			if (newsList == null) {
-				Toast.makeText(CnReaderActivity.this,
+				Toast.makeText(ReaderMainActivity.this,
 						R.string.no_intenert_connection_tip, Toast.LENGTH_LONG)
 						.show();
 			} else {
-				mNewsListView.addFooterView(loadMoreButton);
+				//mNewsListView.addFooterView(loadMoreButton);
 				showNewsList();
 				//mNewsListView.setSelection((pageID - 1) * 30 - 1);
 			}
@@ -156,12 +155,6 @@ public class CnReaderActivity extends Activity implements OnItemClickListener {
 
 	}
 
-    /**
-     *  ÖÆ×÷²Ëµ¥
-     * @param menu
-     * @return
-     */
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		menu.add(Menu.NONE, MENU_SETTING, 1,
@@ -182,12 +175,6 @@ public class CnReaderActivity extends Activity implements OnItemClickListener {
 		return super.onCreateOptionsMenu(menu);
 	}
 
-
-    /**
-     * ¶Ô²Ëµ¥ÊÂ¼ş½øĞĞÏìÓ¦£¬Ìø×ªµ½²»Í¬µÄactivity
-     * @param item
-     * @return
-     */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent intent;
