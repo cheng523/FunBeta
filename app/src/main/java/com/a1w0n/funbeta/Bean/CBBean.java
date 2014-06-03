@@ -10,5 +10,18 @@ public class CBBean {
 
     public AllInfoSectionBean allInfoSectionBean;
 
+    public int size() {
+        int size = 0;
+
+        if (realtimeSectionBean != null && realtimeSectionBean.articles != null) {
+            size += realtimeSectionBean.articles.size();
+        }
+
+//        if (allInfoSectionBean != null && allInfoSectionBean.articles != null) {
+//            size += allInfoSectionBean.articles.size();
+//        }
+
+        return size;
+    }
 
 }

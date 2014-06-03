@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.a1w0n.funbeta.Bean.CBBean;
 import com.a1w0n.funbeta.R;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Aiwan on 2014/5/25 0025.
@@ -18,13 +16,14 @@ import java.util.Map;
  * ReaderMainFragment的新闻列表要用到的Adapter
  */
 public class ReaderMainListAdapter extends BaseAdapter {
+    private static final String TAG = "ReaderMainListAdapter";
 
     // 新闻数据
-    private List<Map<String, String>> mData;
+    private CBBean mData;
     // 用来从XML文件中获取View
     private LayoutInflater mLI;
 
-    public ReaderMainListAdapter(Context context, List<Map<String, String>> paramResult) {
+    public ReaderMainListAdapter(Context context, CBBean paramResult) {
         mData = paramResult;
         mLI = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -55,8 +54,8 @@ public class ReaderMainListAdapter extends BaseAdapter {
             tv = (TextView)convertView.getTag();
         }
 
-        //tv.setText(mData.get(position).);
+        tv.setText(mData.realtimeSectionBean.articles.get(position).title);
 
-        return null;
+        return convertView;
     }
 }
